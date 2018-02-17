@@ -1,0 +1,51 @@
+{
+  "name": "react-redux-boilerplate",
+  "version": "1.0.0",
+  "description": "This is a boilerplate for react and redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development node -r babel-register ./node_modules/.bin/webpack-dev-server --config ./config/webpack.config.dev.js --watch --colors",
+    "build": "NODE_ENV=production node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.prod.js --progress --profile --colors",
+    "build:analyzer": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codetetris/react-redux-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codetetris/react-redux-boilerplate/issues"
+  },
+  "homepage": "https://github.com/codetetris/react-redux-boilerplate#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "clean-webpack-plugin": "^0.1.18",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.6",
+    "html-webpack-plugin": "^2.30.1",
+    "react-hot-loader": "^3.1.3",
+    "standard-loader": "^6.0.1",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.11.0",
+    "webpack-bundle-analyzer": "^2.10.0",
+    "webpack-dashboard": "^1.1.1",
+    "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2"
+  }
+}
