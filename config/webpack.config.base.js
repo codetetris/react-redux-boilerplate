@@ -8,16 +8,10 @@ const paths = {
 const config = {
   entry: [path.join(__dirname, '../', 'src', 'index')],
 
-  output: {
-    path: path.join(__dirname, '../', 'dist'),
-    filename: 'js/[name]_[chunkhash].js',
-    publicPath: '/'
-  },
-
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      // TODO
+      store: path.join(paths.src, 'store')
     }
   },
 

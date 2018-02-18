@@ -1,12 +1,17 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import { Provider } from 'react-redux'
+
 import App from './app'
+import store from 'store/configure-store'
 
 const renderApp = (NextApp) => {
   render(
     <AppContainer>
-      <NextApp />
+      <Provider store={store}>
+        <NextApp />
+      </Provider>
     </AppContainer>,
     document.querySelector('[data-js="app"]')
   )

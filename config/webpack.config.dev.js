@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import path from 'path'
 import baseConfig from './webpack.config.base'
 import Dashboard from 'webpack-dashboard'
 import DashboardPlugin from 'webpack-dashboard/plugin'
@@ -13,6 +14,12 @@ const config = {
     'webpack-dev-server/client?http://localhost:3000',
     ...baseConfig.entry
   ],
+
+  output: {
+    path: path.join(__dirname, '../', 'dist'),
+    filename: 'js/[name]_[hash].js',
+    publicPath: '/'
+  },
 
   devtool: 'source-map',
 

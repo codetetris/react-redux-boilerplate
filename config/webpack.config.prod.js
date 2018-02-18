@@ -10,6 +10,12 @@ const config = {
 
   ...baseConfig,
 
+  output: {
+    path: path.join(__dirname, '../', 'dist'),
+    filename: 'js/[name]_[chunkhash].js',
+    publicPath: '/'
+  },
+
   plugins: [
 
     ...baseConfig.plugins,
