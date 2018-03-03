@@ -9,12 +9,5 @@ export default ({ initialState } = {}) => {
   const enhancer = compose(logger())
   const store = createStore(rootReducer, initialState, enhancer)
 
-  if (module.hot) {
-    module.hot.accept('./index', () => {
-      const nextReducer = require('./index').default
-      store.replaceReducer(nextReducer)
-    })
-  }
-
   return store
 }
