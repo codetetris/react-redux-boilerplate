@@ -36,13 +36,13 @@ const config = {
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|txt)(\?.*)?$/,
         use: {
-          loader: 'file-loader?name=/media/[name].[hash:8].[ext]'
+          loader: 'file-loader?name=media/[name].[hash:8].[ext]'
         }
       },
       {
         test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
         use: {
-          loader: 'url-loader?name=/media/[name].[hash:8].[ext]'
+          loader: 'url-loader?name=media/[name].[hash:8].[ext]'
         }
       },
       {
