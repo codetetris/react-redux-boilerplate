@@ -14,7 +14,9 @@ const config = {
       pages: path.join(paths.src, 'pages')
     }
   },
-
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [
       {
