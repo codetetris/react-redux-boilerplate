@@ -9,7 +9,9 @@ const config = {
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      store: path.join(paths.src, 'store')
+      store: path.join(paths.src, 'store'),
+      utils: path.join(paths.src, 'utils'),
+      pages: path.join(paths.src, 'pages')
     }
   },
 

@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   user: {},
-  isLogged: null,
+  isLogged: false,
   isFetching: false,
   isError: false,
   errorMessage: ''
