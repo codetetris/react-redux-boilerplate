@@ -12,4 +12,9 @@ export const routesPublics = [
   }
 ]
 
-export const routesPrivates = []
+export const routesPrivates = [
+  {
+    path: '/login_private',
+    component: Login
+  }
+]

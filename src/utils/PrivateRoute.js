@@ -1,60 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { Route, Redirect } from 'react-router-dom'
-
-import AuthMiddleware from './../modules/auth/middleware'
+import { Redirect } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isLogged: state.auth.isLogged
   }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    isLoggedIn: () => AuthMiddleware.isLoggedIn()
-  }, dispatch)
 }
 
 class PrivateRoute extends Component {
-  constructor (props) {
-    super(props)
-    if (!props.isAuthenticated) {
-      setTimeout(() => {
-        props.isLoggedIn()
-      }, 5)
-    }
-  }
-
-  componentWillMount () {
-    if (this.props.isAuthenticated) {
-    } else {
-    }
-  }
-  componentWillUnmount () {}
-
   render () {
-    const { isAuthenticated, component, ...rest } = this.props
-    if (isAuthenticated !== null) {
-      return (
-        <Route
-          {...rest} render={props => (
-            isAuthenticated ? (
-              React.createElement(component, props)
-            ) : (
-              <Redirect
-                to={{
-                  pathname: '/login',
-                  state: { from: props.location }
-                }}
-              />
-            )
-          )}
+    const { isLogged, children } = this.props
+    return (
+      !isLogged ? (
+        children
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/hello'
+          }}
         />
       )
-    } return null
+    )
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute)
+export default connect(mapStateToProps)(PrivateRoute)

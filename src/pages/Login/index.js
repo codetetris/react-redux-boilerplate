@@ -20,7 +20,6 @@ const mapStateToProps = () => ({
 
 const mapDispatchToPros = () => (
   bindActionCreators({
-    signin
   })
 )
 

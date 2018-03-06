@@ -1,18 +1,28 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import PublicRoute from 'utils/PublicRoute'
-import { routesPublics } from './pathUrls'
+import PrivateRoute from 'utils/PrivateRoute'
+import { routesPublics, routesPrivates } from './pathUrls'
 
-const Routes = () => (
-  <Switch>
-    <PublicRoute>
+const Routes = () => ([
+  <PublicRoute>
+    <Switch>
       {
         routesPublics.map((route, index) => (
           <Route key={index} path={route.path} component={route.component} exact />
         ))
       }
-    </PublicRoute>
-  </Switch>
-)
+    </Switch>
+  </PublicRoute>,
+  <PrivateRoute>
+    <Switch>
+      {
+        routesPrivates.map((route, index) => (
+          <Route key={index} path={route.path} component={route.component} exact />
+        ))
+      }
+    </Switch>
+  </PrivateRoute>
+])
 
 export default Routes
