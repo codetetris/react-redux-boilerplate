@@ -7,7 +7,7 @@ import {
   LOGOUT_SUCCESS,
   IS_LOGGED_IN,
   IS_LOGGED_OUT
-} from './actions'
+} from './constants'
 
 const initialState = {
   user: {},

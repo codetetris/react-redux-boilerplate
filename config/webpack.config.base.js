@@ -9,9 +9,10 @@ const config = {
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
+      components: path.join(paths.src, 'components'),
+      pages: path.join(paths.src, 'pages'),
       store: path.join(paths.src, 'store'),
-      utils: path.join(paths.src, 'utils'),
-      pages: path.join(paths.src, 'pages')
+      utils: path.join(paths.src, 'utils')
     }
   },
   devServer: {
