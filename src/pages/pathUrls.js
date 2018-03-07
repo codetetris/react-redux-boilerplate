@@ -1,20 +1,37 @@
-import Login from './Login/index'
-import Home from './Home/index'
+import Login from './Login'
+import Home from './Home'
 
-export const routesPublics = [
+/**
+ * Only not logged users can access these routes
+ */
+export const notLoggedRoutes = [
   {
     path: '/login',
     component: Login
-  },
+  }
+]
+
+/**
+ * Both logged and not logged users can access these routes
+ */
+export const publicRoutes = [
   {
     path: '/',
     component: Home
   }
 ]
 
-export const routesPrivates = [
+/**
+ * Only logged users can access these routes
+ */
+export const privateRoutes = [
   {
-    path: '/login_private',
-    component: Login
+    path: '/private',
+    component: Home,
+    default: true
+  },
+  {
+    path: '/private2',
+    component: Home
   }
 ]

@@ -1,26 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import LoginComponent from 'components/auth/login'
-import { signin } from 'store/auth/service'
 
-class Login extends Component {
-  render () {
-    return <LoginComponent handleSubmit={this.handleSubmit} />
-  }
+// Actions
+import { signIn } from '../../store/auth/actions'
 
-  handleSubmit = (values) => {
+// Components
+import LoginComponent from '../../components/auth/login'
 
-  }
+const Login = ({ signIn }) => <LoginComponent onSubmit={signIn} />
+
+Login.propTypes = {
+  signIn: PropTypes.func.isRequired
 }
 
-const mapStateToProps = () => ({
+Login.defaultProps = {
+  loginValues: undefined
+}
 
-})
+const mapStateToProps = () => ({})
 
-const mapDispatchToPros = () => (
-  bindActionCreators({
-  })
-)
+const mapDispatchToPros = (dispatch) => bindActionCreators({
+  signIn
+}, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToPros)(Login)

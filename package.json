@@ -4,10 +4,11 @@
   "description": "This is a boilerplate for react and redux",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": " webpack-dev-server --config ./config/webpack.config.dev.js  --hot --open --colors",
     "build": "webpack --config ./config/webpack.config.prod.js --progress --profile --colors",
-    "build:analyzer": ""
+    "build:analyzer": "",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,10 @@
   },
   "homepage": "https://github.com/codetetris/react-redux-boilerplate#readme",
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -43,6 +46,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.4",
+    "jest": "^22.4.2",
     "prettier": "1.11.1",
     "react-hot-loader": "^4.0.0",
     "react-redux": "^5.0.7",
@@ -57,8 +61,13 @@
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "btoa": "^1.1.2",
+    "lodash": "^4.17.5",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "redux-saga": "^0.16.0"
   }
 }
