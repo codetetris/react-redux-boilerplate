@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { privateRoutes, publicRoutes, notLoggedRoutes } from './pathUrls'
 
-import Login from '../pages/Login'
+import LoginPage from '../pages/LoginPage'
 
 const mapStateToProps = (state) => {
   return {
@@ -33,7 +33,7 @@ const Routes = ({ isLogged }) => {
     <Route
       key={route.path}
       path={route.path}
-      component={isLogged ? route.component : Login}
+      component={isLogged ? route.component : LoginPage}
       exact
     />
   )

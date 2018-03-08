@@ -1,4 +1,4 @@
-import createReducer from '../create-reducer'
+import createReducer from '../createReducer'
 import {
   SIGN_IN,
   SIGN_IN_SUCCESSFUL,

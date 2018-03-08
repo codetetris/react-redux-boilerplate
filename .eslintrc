@@ -8,7 +8,12 @@
     "browser": true,
     "jest": true
   },
-  "extends": ["standard", "standard-react"],
+  "extends": [
+    "standard",
+    "standard-react",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
   "rules": {
     "no-unused-expressions": 0
   }

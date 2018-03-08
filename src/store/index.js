@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form'
 import { all } from 'redux-saga/effects'
 
 // Reducers
-import authReducer from 'store/auth/reducers'
+import authReducer from './auth/reducers'
 
 // Sagas
 import authSagas from './auth/sagas'

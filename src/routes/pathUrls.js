@@ -1,5 +1,5 @@
-import Login from './Login'
-import Home from './Home'
+import Login from '../pages/LoginPage'
+import Home from '../pages/HomePage'
 
 /**
  * Only not logged users can access these routes

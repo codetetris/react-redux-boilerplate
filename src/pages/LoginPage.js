@@ -4,18 +4,18 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 // Actions
-import { signIn } from '../../store/auth/actions'
+import { signIn } from '../store/auth/actions'
 
 // Components
-import LoginComponent from '../../components/auth/login'
+import LoginComponent from '../components/form/LoginForm'
 
-const Login = ({ signIn }) => <LoginComponent onSubmit={signIn} />
+const LoginPage = ({ signIn }) => <LoginComponent onSubmit={signIn} />
 
-Login.propTypes = {
+LoginPage.propTypes = {
   signIn: PropTypes.func.isRequired
 }
 
-Login.defaultProps = {
+LoginPage.defaultProps = {
   loginValues: undefined
 }
 
@@ -25,4 +25,4 @@ const mapDispatchToPros = (dispatch) => bindActionCreators({
   signIn
 }, dispatch)
 
-export default connect(mapStateToProps, mapDispatchToPros)(Login)
+export default connect(mapStateToProps, mapDispatchToPros)(LoginPage)
