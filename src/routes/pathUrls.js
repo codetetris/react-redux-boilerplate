@@ -1,6 +1,8 @@
 import Login from '../pages/LoginPage'
 import Home from '../pages/HomePage'
 
+import DashboardTemplate from '../components/template/DashboardTemplate'
+
 /**
  * Only not logged users can access these routes
  */
@@ -28,6 +30,7 @@ export const privateRoutes = [
   {
     path: '/private',
     component: Home,
+    template: DashboardTemplate,
     default: true
   },
   {

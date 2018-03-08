@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { privateRoutes, publicRoutes, notLoggedRoutes } from './pathUrls'
 
+import RouteWithTemplate from './RouteWithTemplate'
 import LoginPage from '../pages/LoginPage'
 
 const mapStateToProps = (state) => {
@@ -16,27 +17,24 @@ const mapStateToProps = (state) => {
 const Routes = ({ isLogged }) => {
   const defaultPrivateRoute = privateRoutes.find(route => route.default)
 
-  const setRoute = route => (
-    <Route
-      key={route.path}
-      path={route.path}
-      component={route.component}
-      exact
-    />
-  )
+  const setRoute = (route) => route.template
+    ? <RouteWithTemplate {...route} key={route.path} />
+    : (
+      <Route
+        key={route.path}
+        {...route}
+        exact
+      />
+    )
 
   /**
-   * This preserves the path to redirect to wished page after login
+   * This preserves the path for redirect to wished page after login
    * @param {*} route
    */
-  const setPrivateRoute = route => (
-    <Route
-      key={route.path}
-      path={route.path}
-      component={isLogged ? route.component : LoginPage}
-      exact
-    />
-  )
+  const setPrivateRoute = route => setRoute({
+    ...route,
+    component: isLogged ? route.component : LoginPage
+  })
 
   const setRedirect = route => (
     <Redirect
