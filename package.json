@@ -36,6 +36,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^0.1.18",
+    "css-loader": "^0.28.10",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.2",
@@ -51,15 +52,18 @@
     "html-webpack-plugin": "^3.0.4",
     "jest": "^22.4.2",
     "jest-css-modules": "^1.1.0",
+    "node-sass": "^4.7.2",
     "prettier": "1.11.1",
     "react-hot-loader": "^4.0.0",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
     "redux-persist": "^5.9.1",
+    "sass-loader": "^6.0.7",
     "standard-loader": "^6.0.1",
+    "style-loader": "^0.20.2",
     "url-loader": "^1.0.1",
-    "webpack": "^4.1.0",
+    "webpack": "^4.1.1",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^3.1.0"
@@ -93,7 +97,7 @@
       "./config/jest.config.js"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest.filemock.js"
     },
     "unmockedModulePathPatterns": [
       "node_modules/react/",

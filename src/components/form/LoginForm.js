@@ -2,6 +2,8 @@ import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import PropTypes from 'prop-types'
 
+import './styles/LoginForm.scss'
+
 const LoginForm = ({ handleSubmit, onSubmit }) => (
   <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
     <div>
