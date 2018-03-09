@@ -13,6 +13,7 @@ const config = {
   entry: {
     app: './src/index.js',
     vendor: Object.keys(packageJson.dependencies)
+      .filter(pckg => pckg !== 'normalize.scss')
   },
 
   module: {

@@ -71,6 +71,7 @@
     "axios": "^0.18.0",
     "btoa": "^1.1.2",
     "lodash": "^4.17.5",
+    "normalize.scss": "^0.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

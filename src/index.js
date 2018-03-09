@@ -6,6 +6,8 @@ import { PersistGate } from 'redux-persist/es/integration/react'
 import App from './app'
 import configureStore from './store/configureStore'
 
+import './index.scss'
+
 const { persistor, store } = configureStore()
 
 const onBeforeLift = () => {

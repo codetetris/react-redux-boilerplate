@@ -1,0 +1,20 @@
+machine:
+  node:
+    version: 6.11.2
+general:
+  branches:
+    only:
+      - master
+      - dev
+test:
+  pre:
+    - npm run lint
+  override:
+    - npm run test -- --runInBand
+deployment:
+  production:
+    branch: master
+    commands:
+      - rm -rf build
+      - npm run build
+      - surge --project ./build --domain https://staging-react-reduxb-boilerplate.surge.sh

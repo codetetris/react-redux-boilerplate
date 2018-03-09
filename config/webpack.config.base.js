@@ -64,7 +64,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.src, 'index.html')
+      template: path.join(paths.src, 'index.html'),
+      favicon: path.join(paths.src, 'favicon.ico')
     })
   ]
 }
