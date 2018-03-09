@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const CleanPlugin = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
@@ -38,15 +39,21 @@ const config = {
   },
 
   plugins: [
-
     ...baseConfig.plugins,
 
     new CleanPlugin(['dist'], {
       root: path.join(__dirname, '..')
     }),
 
-    extractSass
-  ],
+    extractSass,
+
+    new webpack.DefinePlugin({
+      'process.env.SERVER_ENV': JSON.stringify(process.env.SERVER_ENV)
+    }),
+
+    process.env.BUNDLE_ANALYZER && new BundleAnalyzerPlugin()
+  ].filter(Boolean),
+
   optimization: {
     splitChunks: {
       cacheGroups: {
