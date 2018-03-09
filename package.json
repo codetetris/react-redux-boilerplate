@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": " webpack-dev-server --config ./config/webpack.config.dev.js  --hot --open --colors",
+    "start": "webpack-dev-server --config ./config/webpack.config.dev.js  --hot --open --colors",
     "build": "webpack --config ./config/webpack.config.prod.js --progress --profile --colors",
     "build:analyzer": "",
     "lint": "eslint src",
-    "format": "prettier-standard 'src/**/*.js'"
+    "format": "prettier-standard 'src/**/*.js'",
+    "precommit": "npm test",
+    "prepush": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
@@ -52,6 +54,7 @@
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.4",
+    "husky": "^0.14.3",
     "jest": "^22.4.2",
     "jest-css-modules": "^1.1.0",
     "node-sass": "^4.7.2",
