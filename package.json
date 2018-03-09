@@ -8,7 +8,8 @@
     "start": " webpack-dev-server --config ./config/webpack.config.dev.js  --hot --open --colors",
     "build": "webpack --config ./config/webpack.config.prod.js --progress --profile --colors",
     "build:analyzer": "",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "format": "prettier-standard 'src/**/*.js'"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,7 @@
     "jest-css-modules": "^1.1.0",
     "node-sass": "^4.7.2",
     "prettier": "1.11.1",
+    "prettier-standard": "^8.0.0",
     "react-hot-loader": "^4.0.0",
     "sass-loader": "^6.0.7",
     "standard-loader": "^6.0.1",

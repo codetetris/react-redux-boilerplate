@@ -5,7 +5,7 @@ import http from '../../utils/http'
 // Endpoints
 const signInEndpoint = '/users/auth'
 
-export const signIn = (credentials) => {
+export const signIn = credentials => {
   return http
     .post(signInEndpoint, {
       login: credentials.email,

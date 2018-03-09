@@ -5,26 +5,22 @@ import { join } from 'path'
 import { capitalize } from 'lodash'
 
 const componentsPath = './src/components'
-const ignoreDirectories = [
-  '__tests__',
-  'shared'
-]
+const ignoreDirectories = ['__tests__', 'shared']
 
 const isDirectory = name => lstatSync(join(componentsPath, name)).isDirectory()
 const isFile = (path, name) => lstatSync(join(path, name)).isFile()
 
-const isValidDirectoryName = name => !ignoreDirectories
-  .find(dirName => dirName === name)
+const isValidDirectoryName = name =>
+  !ignoreDirectories.find(dirName => dirName === name)
 
-const readDirectory = path => readdirSync(path)
-  .map(name => name)
+const readDirectory = path => readdirSync(path).map(name => name)
 
-const getDirectories = path => readDirectory(path)
-  .filter(isDirectory)
-  .filter(isValidDirectoryName)
+const getDirectories = path =>
+  readDirectory(path)
+    .filter(isDirectory)
+    .filter(isValidDirectoryName)
 
-const getFiles = path => readDirectory(path)
-  .filter(name => isFile(path, name))
+const getFiles = path => readDirectory(path).filter(name => isFile(path, name))
 
 describe('Components White Box Tests', () => {
   describe('The component directories and suffix patterns', () => {

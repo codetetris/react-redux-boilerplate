@@ -19,8 +19,12 @@ LoginPage.defaultProps = {
 
 const mapStateToProps = () => ({})
 
-const mapDispatchToPros = (dispatch) => bindActionCreators({
-  signIn
-}, dispatch)
+const mapDispatchToPros = dispatch =>
+  bindActionCreators(
+    {
+      signIn
+    },
+    dispatch
+  )
 
 export default connect(mapStateToProps, mapDispatchToPros)(LoginPage)

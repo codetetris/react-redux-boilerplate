@@ -9,9 +9,7 @@ import authReducer from './auth/reducers'
 import authSagas from './auth/sagas'
 
 export function * rootSaga () {
-  yield all([
-    authSagas()
-  ])
+  yield all([authSagas()])
 }
 
 export default combineReducers({
