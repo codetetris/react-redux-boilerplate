@@ -1,9 +1,4 @@
-import {
-  all,
-  call,
-  takeLatest,
-  put
-} from 'redux-saga/effects'
+import { all, call, takeLatest, put } from 'redux-saga/effects'
 
 import * as actions from './actions'
 import * as types from './constants'
@@ -24,7 +19,5 @@ export function * watchSignIn () {
 }
 
 export default function * authSagas () {
-  yield all([
-    watchSignIn()
-  ])
+  yield all([watchSignIn()])
 }

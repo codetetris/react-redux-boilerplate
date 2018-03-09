@@ -8,7 +8,7 @@ import { privateRoutes, publicRoutes, notLoggedRoutes } from './pathUrls'
 import RouteWithTemplate from './RouteWithTemplate'
 import LoginPage from '../pages/LoginPage'
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     isLogged: state.auth.isLogged
   }
@@ -17,24 +17,22 @@ const mapStateToProps = (state) => {
 const Routes = ({ isLogged }) => {
   const defaultPrivateRoute = privateRoutes.find(route => route.default)
 
-  const setRoute = (route) => route.template
-    ? <RouteWithTemplate {...route} key={route.path} />
-    : (
-      <Route
-        key={route.path}
-        {...route}
-        exact
-      />
+  const setRoute = route =>
+    route.template ? (
+      <RouteWithTemplate {...route} key={route.path} />
+    ) : (
+      <Route key={route.path} {...route} exact />
     )
 
   /**
    * This preserves the path for redirect to wished page after login
    * @param {*} route
    */
-  const setPrivateRoute = route => setRoute({
-    ...route,
-    component: isLogged ? route.component : LoginPage
-  })
+  const setPrivateRoute = route =>
+    setRoute({
+      ...route,
+      component: isLogged ? route.component : LoginPage
+    })
 
   const setRedirect = route => (
     <Redirect

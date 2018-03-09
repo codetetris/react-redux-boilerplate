@@ -6,11 +6,18 @@ export default class LocalStorageManager {
   }
 
   static removeUser () {
-    if (typeof localStorage['APP_USER'] !== 'undefined') { localStorage.removeItem('APP_USER') }
+    if (typeof localStorage['APP_USER'] !== 'undefined') {
+      localStorage.removeItem('APP_USER')
+    }
   }
 
   static getUser () {
-    if (typeof localStorage['APP_USER'] !== 'undefined' && localStorage['APP_USER'] !== 'undefined') { return JSON.parse(localStorage.getItem('APP_USER')) }
+    if (
+      typeof localStorage['APP_USER'] !== 'undefined' &&
+      localStorage['APP_USER'] !== 'undefined'
+    ) {
+      return JSON.parse(localStorage.getItem('APP_USER'))
+    }
   }
 
   static clearLocalStorage () {

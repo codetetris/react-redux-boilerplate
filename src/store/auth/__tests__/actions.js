@@ -11,10 +11,12 @@ describe('auth actions', () => {
         }
       }
 
-      expect(actions.signIn({
-        email: 'mock',
-        password: 'mock'
-      })).toEqual(expected)
+      expect(
+        actions.signIn({
+          email: 'mock',
+          password: 'mock'
+        })
+      ).toEqual(expected)
     })
   })
 

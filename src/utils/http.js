@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const isUsingProductionAPI = process.env.REACT_APP_SERVER_ENV === 'production'
+const { SERVER_ENV } = process.env
+const isUsingProductionAPI = SERVER_ENV === 'production'
 
 const backendHost = isUsingProductionAPI
   ? 'https://datagateway.fractaltecnologia.com.br'
