@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const extractSass = require('./extractSass.webpack')
 
 const paths = {
   src: path.join(__dirname, '..', 'src')

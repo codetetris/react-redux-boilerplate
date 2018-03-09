@@ -2,7 +2,7 @@ import React from 'react'
 import { hot } from 'react-hot-loader'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import Routes from 'pages/routes'
+import Routes from './routes/Routes'
 
 const supportsHistory = 'pushState' in window.history
 
