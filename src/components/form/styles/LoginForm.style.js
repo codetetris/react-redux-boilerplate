@@ -1,5 +1,5 @@
-import { css } from 'emotion'
+import styled from 'react-emotion'
 
-export const container = css`
+export const Form = styled('div')`
   background: #F1F1F1;
 `

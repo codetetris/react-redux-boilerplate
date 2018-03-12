@@ -1,13 +1,13 @@
-import { css } from 'emotion'
+import styled from 'react-emotion'
 
-export const container = css`
+export const Container = styled('div')`
   background: #abc;
   padding: 20px;
   min-height: 100vh;
   box-sizing: border-box;
   text-align: center;
-  }
 `
-export const childrenContainer = css`
+
+export const ChildrenContainer = styled('div')`
   background: #FFF;
 `
