@@ -2,10 +2,12 @@ import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import PropTypes from 'prop-types'
 
-import './styles/LoginForm.scss'
+import {
+  Form
+} from './styles/LoginForm.style'
 
 const LoginForm = ({ handleSubmit, onSubmit }) => (
-  <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
+  <Form onSubmit={handleSubmit(onSubmit)}>
     <div>
       <div>
         <label htmlFor='email'>Email</label>
@@ -15,7 +17,7 @@ const LoginForm = ({ handleSubmit, onSubmit }) => (
       <Field name='password' component='input' type='password' />
     </div>
     <button type='submit'>Submit</button>
-  </form>
+  </Form>
 )
 
 LoginForm.propTypes = {
