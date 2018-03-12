@@ -3,14 +3,17 @@ import PropTypes from 'prop-types'
 
 import reduxImage from '../../assets/redux.png'
 
-import './styles/DashboardTemplate.scss'
+import {
+  container,
+  childrenContainer
+} from './styles/DashboardTemplate.style'
 
 const DashboardTemplate = ({ children }) => (
-  <div className='dashboard-template'>
+  <div className={container}>
     <div>
       <img src={reduxImage} alt='' />
     </div>
-    <div className='dashboard-template__children'>{children}</div>
+    <div className={childrenContainer}>{children}</div>
   </div>
 )
 

@@ -2,10 +2,12 @@ import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import PropTypes from 'prop-types'
 
-import './styles/LoginForm.scss'
+import {
+  container
+} from './styles/LoginForm.style'
 
 const LoginForm = ({ handleSubmit, onSubmit }) => (
-  <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
+  <form className={container} onSubmit={handleSubmit(onSubmit)}>
     <div>
       <div>
         <label htmlFor='email'>Email</label>
