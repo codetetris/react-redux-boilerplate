@@ -1,57 +1,75 @@
-import webpack from 'webpack'
-import path from 'path'
-import HtmlPlugin from 'html-webpack-plugin'
-import CleanPlugin from 'clean-webpack-plugin'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+const path = require('path')
+const webpack = require('webpack')
+const CleanPlugin = require('clean-webpack-plugin')
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
-import baseConfig from './webpack.config.base'
+const extractSass = require('./extractSass.webpack')
+const baseConfig = require('./webpack.config.base')
+const packageJson = require('../package.json')
 
 const config = {
-
   ...baseConfig,
+  mode: 'production',
 
-  output: {
-    path: path.join(__dirname, '../', 'dist'),
-    filename: 'js/[name]_[chunkhash].js',
-    publicPath: '/'
+  entry: {
+    app: './src/index.js',
+    vendor: Object.keys(packageJson.dependencies)
+      .filter(pckg => pckg !== 'normalize.scss')
+  },
+
+  module: {
+    ...baseConfig.module,
+    rules: [
+      ...baseConfig.module.rules,
+      {
+        test: /\.scss$/,
+        use: extractSass.extract({
+          use: [{
+            loader: 'css-loader',
+            options: {
+              minimize: true
+            }
+          }, {
+            loader: 'sass-loader'
+          }],
+          fallback: 'style-loader'
+        })
+      }
+    ]
   },
 
   plugins: [
-
     ...baseConfig.plugins,
 
     new CleanPlugin(['dist'], {
       root: path.join(__dirname, '..')
     }),
 
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
+    extractSass,
+
+    new webpack.DefinePlugin({
+      'process.env.SERVER_ENV': JSON.stringify(process.env.SERVER_ENV)
     }),
 
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'react-build',
-      chunks: ['main'],
-      minChunks: ({ resource }) =>
-        /node_modules\/(react(-dom)?|fbjs)\//.test(resource)
-    }),
+    process.env.BUNDLE_ANALYZER && new BundleAnalyzerPlugin()
+  ].filter(Boolean),
 
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      chunks: ['main'],
-      minChunks: ({ resource }) => /node_modules/.test(resource)
-    }),
-
-    new HtmlPlugin({
-      template: path.join(path.join(__dirname, '..', 'src'), 'index.html'),
-      minify: { collapseWhitespace: true },
-      chunksSortMode: (chunk1, chunk2) => {
-        const order = ['react-build', 'vendor', 'main']
-        const left = order.indexOf(chunk1.names[0])
-        const right = order.indexOf(chunk2.names[0])
-        return left - right
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: 'vendor',
+          enforce: true
+        }
       }
-    })
-  ].concat(process.env.ANALYZER ? new BundleAnalyzerPlugin() : [])
+    },
+    runtimeChunk: true
+  },
+  output: {
+    filename: 'js/[name]_[chunkhash].js'
+  }
 }
 
-export default config
+module.exports = config

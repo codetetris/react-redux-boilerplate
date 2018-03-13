@@ -1,27 +1,32 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/es/integration/react'
 
 import App from './app'
-import store from 'store/configure-store'
+import configureStore from './store/configureStore'
 
-const renderApp = (NextApp) => {
+import './index.style'
+
+const { persistor, store } = configureStore()
+
+const onBeforeLift = () => {
+  // take some action before the gate lifts
+}
+
+const renderApp = NextApp => {
   render(
-    <AppContainer>
-      <Provider store={store}>
+    <Provider store={store}>
+      <PersistGate
+        loading={null}
+        onBeforeLift={onBeforeLift}
+        persistor={persistor}
+      >
         <NextApp />
-      </Provider>
-    </AppContainer>,
-    document.querySelector('[data-js="app"]')
+      </PersistGate>
+    </Provider>,
+    document.getElementById('app')
   )
 }
 
 renderApp(App)
-
-if (module.hot) {
-  module.hot.accept('./app', () => {
-    const NextApp = require('./app').default
-    renderApp(NextApp)
-  })
-}

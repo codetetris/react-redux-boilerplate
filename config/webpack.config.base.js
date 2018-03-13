@@ -1,56 +1,73 @@
-import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const extractSass = require('./extractSass.webpack')
 
 const paths = {
   src: path.join(__dirname, '..', 'src')
 }
 
 const config = {
-  entry: [path.join(__dirname, '../', 'src', 'index')],
-
   resolve: {
     extensions: ['.js', '.css'],
     alias: {
-      store: path.join(paths.src, 'store')
+      components: path.join(paths.src, 'components'),
+      pages: path.join(paths.src, 'pages'),
+      store: path.join(paths.src, 'store'),
+      utils: path.join(paths.src, 'utils')
     }
   },
-
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'standard-loader',
         include: paths.src,
-        options: {
-          error: false,
-          snazzy: true,
-          parser: 'babel-eslint'
+        use: {
+          loader: 'standard-loader',
+          options: {
+            error: false,
+            snazzy: true,
+            parser: 'babel-eslint'
+          }
         }
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/, /src\/styles/],
-        query: {
-          presets: ['env', 'react', 'stage-0']
-        }
+        exclude: [/node_modules/],
+        use: { loader: 'babel-loader' }
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|txt)(\?.*)?$/,
-        loader: 'file-loader?name=/media/[name].[hash:8].[ext]'
+        use: {
+          loader: 'file-loader?name=media/[name].[hash:8].[ext]'
+        }
       },
       {
         test: /\.(mp4|webm|wav|mp3|m4a|aac|oga)(\?.*)?$/,
-        loader: 'url-loader?name=/media/[name].[hash:8].[ext]'
+        use: {
+          loader: 'url-loader?name=media/[name].[hash:8].[ext]'
+        }
+      },
+      {
+        test: /\.html$/,
+        use: [ {
+          loader: 'html-loader',
+          options: {
+            minimize: true
+          }
+        }]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(paths.src, 'index.html')
+      template: path.join(paths.src, 'index.html'),
+      favicon: path.join(paths.src, 'favicon.ico')
     })
   ]
 }
 
-export default { ...config }
+module.exports = { ...config }

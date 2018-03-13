@@ -1,41 +1,28 @@
-import webpack from 'webpack'
-import path from 'path'
-import baseConfig from './webpack.config.base'
-import Dashboard from 'webpack-dashboard'
-import DashboardPlugin from 'webpack-dashboard/plugin'
-
-const dashboard = new Dashboard()
+const baseConfig = require('./webpack.config.base')
 
 const config = {
   ...baseConfig,
-
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    ...baseConfig.entry
-  ],
-
-  output: {
-    path: path.join(__dirname, '../', 'dist'),
-    filename: 'js/[name]_[hash].js',
-    publicPath: '/'
-  },
-
+  mode: 'development',
   devtool: 'source-map',
-
+  module: {
+    ...baseConfig.module,
+    rules: [
+      ...baseConfig.module.rules,
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
+      }
+    ]
+  },
   plugins: [
-    ...baseConfig.plugins,
-    new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin(dashboard.setData)
-  ],
-
-  devServer: {
-    quiet: true,
-    hot: true,
-    port: '3000',
-    inline: true,
-    historyApiFallback: true
-  }
+    ...baseConfig.plugins
+  ]
 }
 
-export default config
+module.exports = config
