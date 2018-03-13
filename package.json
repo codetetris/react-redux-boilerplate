@@ -65,6 +65,7 @@
     "prettier": "1.11.1",
     "prettier-standard": "^8.0.0",
     "react-hot-loader": "^4.0.0",
+    "redux-mock-store": "^1.5.1",
     "sass-loader": "^6.0.7",
     "standard-loader": "^6.0.1",
     "style-loader": "^0.20.2",
