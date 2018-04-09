@@ -68,6 +68,7 @@ const config = {
     runtimeChunk: true
   },
   output: {
+    ...baseConfig.output,
     filename: 'js/[name]_[chunkhash].js'
   }
 }
