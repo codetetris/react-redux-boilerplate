@@ -4,8 +4,8 @@ const { SERVER_ENV } = process.env
 const isUsingProductionAPI = SERVER_ENV === 'production'
 
 const backendHost = isUsingProductionAPI
-  ? 'https://datagateway.fractaltecnologia.com.br'
-  : 'https://staging.datagateway.fractaltecnologia.com.br'
+  ? 'example.com.br'
+  : 'example2.com.br'
 
 const apiVersion = 'v1'
 
