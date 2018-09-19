@@ -28,11 +28,10 @@ const config = {
         test: /\.js$/,
         include: paths.src,
         use: {
-          loader: 'standard-loader',
+          loader: 'eslint-loader',
           options: {
-            error: false,
-            snazzy: true,
-            parser: 'babel-eslint'
+            emitError: false,
+            emitWarning: true
           }
         }
       },
