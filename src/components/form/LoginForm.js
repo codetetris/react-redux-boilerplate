@@ -2,9 +2,7 @@ import React from 'react'
 import { reduxForm, Field } from 'redux-form'
 import PropTypes from 'prop-types'
 
-import {
-  Form
-} from './styles/LoginForm.style'
+import { Form } from './styles/LoginForm.style'
 
 const LoginForm = ({ handleSubmit, onSubmit }) => (
   <Form onSubmit={handleSubmit(onSubmit)}>

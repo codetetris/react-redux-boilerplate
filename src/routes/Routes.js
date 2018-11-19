@@ -68,9 +68,7 @@ const Routes = ({ isLogged }) => {
    *
    * These two rules allow overwrites on direction of user status, easing the route configuration.
    */
-  const routes = isLogged
-    ? routesPrecedence
-    : reverse(routesPrecedence)
+  const routes = isLogged ? routesPrecedence : reverse(routesPrecedence)
 
   return (
     <Switch>

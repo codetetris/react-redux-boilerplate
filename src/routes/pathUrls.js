@@ -1,5 +1,3 @@
-import React from 'react'
-
 import DashboardTemplate from '../components/template/DashboardTemplate'
 
 import Login from '../pages/LoginPage'
@@ -19,14 +17,6 @@ export const privateRoutes = [
     component: Home,
     template: DashboardTemplate,
     default: true
-  },
-  {
-    path: '/private2',
-    component: () => <p>private version of /private2</p>
-  },
-  {
-    path: '/private3',
-    component: () => <p>private version of /private3</p>
   }
 ]
 
@@ -42,10 +32,6 @@ export const notLoggedRoutes = [
   {
     path: '/login',
     component: Login
-  },
-  {
-    path: '/private2',
-    component: () => <p>Not logged version</p>
   }
 ]
 
@@ -61,9 +47,5 @@ export const publicRoutes = [
   {
     path: '/',
     component: Home
-  },
-  {
-    path: '/private3',
-    component: () => <p>public version</p>
   }
 ]
