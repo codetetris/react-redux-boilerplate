@@ -9,5 +9,5 @@ export const Container = styled('div')`
 `
 
 export const ChildrenContainer = styled('div')`
-  background: #FFF;
+  background: #fff;
 `

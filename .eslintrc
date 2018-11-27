@@ -2,19 +2,38 @@
   "root": true,
   "parser": "babel-eslint",
   "parserOptions": {
-    "sourceType": "module"
-  },
-  "env": {
-    "browser": true,
-    "jest": true
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
     "standard",
     "standard-react",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
   "rules": {
-    "no-unused-expressions": 0
+    "no-unused-expressions": 0,
+    "react/prop-types": [2, { "skipUndeclared": true }],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/no-unsafe": ["error"]
+  },
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "globals": {
+    "localStorage": false
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "16.6.1"
+    }
   }
 }

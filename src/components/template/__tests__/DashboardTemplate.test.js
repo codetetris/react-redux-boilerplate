@@ -3,7 +3,11 @@ import { shallow } from 'enzyme'
 
 import DashboardTemplate from '../DashboardTemplate'
 
-const wrapper = shallow(<DashboardTemplate><p>Mock</p></DashboardTemplate>)
+const wrapper = shallow(
+  <DashboardTemplate>
+    <p>Mock</p>
+  </DashboardTemplate>
+)
 
 describe('(Component) DashboardTemplate', () => {
   it('renders without crash', () => {
